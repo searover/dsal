@@ -1,2 +1,2 @@
 # dsal
-Data Stracture And Algothrim
+Data Structure And Algorithm
