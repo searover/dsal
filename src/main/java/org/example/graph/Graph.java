@@ -53,6 +53,39 @@ public class Graph {    // 无向图
         }
     }
 
+    public void dfs(int s, int t) {
+        boolean[] visited = new boolean[v];
+        int[] prev = new int[v];
+        for (int i = 0; i < prev.length; i++) {
+            prev[i] = -1;
+        }
+        visited[s] = true;
+        dfs_internal(prev, visited, s, t);
+        if (found) {
+            print(prev, s, t);
+        }
+    }
+
+    private boolean found;
+
+    private void dfs_internal(int[] prev, boolean[] visited, int w, int t) {
+        if (found)
+            return;
+        for (int i = 0; i < adj[w].size(); i++) {
+            int q = adj[w].get(i);
+            if (!visited[q]) {
+                prev[q] = w;
+                visited[q] = true;
+                if (q == t) {
+                    System.out.println("found.");
+                    found = true;
+                    return;
+                }
+                dfs_internal(prev, visited, q, t);
+            }
+        }
+    }
+
     private void print(int[] prev, int s, int t) {
         // 递归打印s->t的路径
         if (t != s && prev[t] != -1) {
@@ -74,5 +107,19 @@ public class Graph {    // 无向图
         g.bfs(0, 7);
         System.out.println();
         g.bfs(7, 0);
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        Graph dg = new Graph(9)
+                .addEdge(1, 2).addEdge(1, 4)
+                .addEdge(2, 5).addEdge(2, 3).addEdge(2, 1)
+                .addEdge(3, 6).addEdge(3, 2)
+                .addEdge(4, 1).addEdge(4, 5)
+                .addEdge(5, 4).addEdge(5, 2).addEdge(5, 6).addEdge(5, 7)
+                .addEdge(6, 3).addEdge(6, 8).addEdge(6, 5)
+                .addEdge(7, 5).addEdge(7, 8)
+                .addEdge(8, 6).addEdge(8, 7);
+        dg.dfs(1, 7);
     }
 }
