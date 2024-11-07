@@ -1,5 +1,6 @@
 package org.example.graph;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -56,9 +57,7 @@ public class Graph {    // 无向图
     public void dfs(int s, int t) {
         boolean[] visited = new boolean[v];
         int[] prev = new int[v];
-        for (int i = 0; i < prev.length; i++) {
-            prev[i] = -1;
-        }
+        Arrays.fill(prev, -1);
         visited[s] = true;
         dfs_internal(prev, visited, s, t);
         if (found) {

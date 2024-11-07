@@ -58,16 +58,48 @@ public class Graph {
         }
     }
 
+    public void topoSortByDFS() {
+        // 构造逆邻接表
+        LinkedList<Integer>[] inversedAdj = new LinkedList[v];
+        for (int i = 0; i < inversedAdj.length; i++) {
+            inversedAdj[i] = new LinkedList<>();
+        }
+        for (int i = 0; i < adj.length; i++) {
+            for (int j = 0; j < adj[i].size(); j++) {
+                int w = adj[i].get(j);
+                inversedAdj[w].add(i);
+            }
+        }
+        boolean[] visited = new boolean[v];
+        for (int i = 0; i < inversedAdj.length; i++) {
+            if (visited[i] == false) {
+                visited[i] = true;
+                dfs(i, inversedAdj, visited);
+            }
+        }
+    }
+
+    private void dfs(int vertex, LinkedList<Integer>[] inversedAdj, boolean[] visited) {
+        for (int i = 0; i < inversedAdj[vertex].size(); i++) {
+            int w = inversedAdj[vertex].get(i);
+            if (visited[w] == false) {
+                visited[w] = true;
+                dfs(w, inversedAdj, visited);
+            }
+        }
+        System.out.print("->" + vertex);
+    }
+
     public static void main(String[] args) {
         Graph g = new Graph(8)
                 .addEdge(0, 1).addEdge(0, 3)
                 .addEdge(1, 2).addEdge(1, 4)
                 .addEdge(2, 5)
                 .addEdge(3, 4)
-                .addEdge(4, 3).addEdge(4, 5).addEdge(4, 6)
-                .addEdge(5, 2).addEdge(5, 4).addEdge(5, 7)
-                .addEdge(6, 4).addEdge(6, 7)
-                .addEdge(7, 5).addEdge(7, 6);
+                .addEdge(5, 4).addEdge(5, 7)
+                .addEdge(7, 6);
         g.topoSortByKahn();
+        System.out.println("-----");
+        g.topoSortByDFS();
     }
 }
