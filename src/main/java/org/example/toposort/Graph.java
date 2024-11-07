@@ -99,7 +99,26 @@ public class Graph {
                 .addEdge(5, 4).addEdge(5, 7)
                 .addEdge(7, 6);
         g.topoSortByKahn();
-        System.out.println("-----");
+        System.out.println("\n-----");
         g.topoSortByDFS();
+        System.out.println("\n-----");
+        g.topoSortByBFS();
+    }
+
+    private void topoSortByBFS() {
+        boolean[] visited = new boolean[v];
+        LinkedList<Integer> queue = new LinkedList<>();
+        queue.add(0);
+        while (!queue.isEmpty()) {
+            int w = queue.poll();
+            for (int i = 0; i < adj[w].size(); i++) {
+                int q = adj[w].get(i);
+                if (!visited[q]) {
+                    visited[q] = true;
+                    queue.add(q);
+                }
+            }
+            System.out.print("->" + w);
+        }
     }
 }
