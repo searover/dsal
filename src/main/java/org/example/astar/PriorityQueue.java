@@ -1,6 +1,5 @@
 package org.example.astar;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * @author luxz
@@ -16,7 +15,7 @@ public class PriorityQueue {
     }
 
     public Vertex poll() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     public void add(Vertex vertex) {
@@ -30,7 +29,7 @@ public class PriorityQueue {
     }
 
     public boolean isEmpty() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     public void clear() {

@@ -1,6 +1,5 @@
 package org.example.dijkstra;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.LinkedList;
 
@@ -61,7 +60,7 @@ public class Graph { // 有向有权图的邻接表表示
         }
 
         public Vertex poll() {
-            throw new NotImplementedException();
+            throw new UnsupportedOperationException();
         }
 
         public void add(Vertex vertex) {
@@ -75,7 +74,7 @@ public class Graph { // 有向有权图的邻接表表示
         }
 
         public boolean isEmpty() {
-            throw new NotImplementedException();
+            throw new UnsupportedOperationException();
         }
     }
 
