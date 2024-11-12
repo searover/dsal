@@ -15,6 +15,8 @@ public class MaxSubSum {
         System.out.println("Max sub sum2: " + maxSubSum);
         maxSubSum = maxSubSum3(a);
         System.out.println("Max sub sum3: " + maxSubSum);
+        maxSubSum = maxSubSum4(a);
+        System.out.println("Max sub sum4: " + maxSubSum);
     }
 
     public static int maxSubSum1(int[] a) {
@@ -84,5 +86,19 @@ public class MaxSubSum {
 
     public static int maxSubSum3(int[] a) {
         return maxSumRec(a, 0, a.length - 1);
+    }
+
+
+    public static int maxSubSum4(int[] a) {
+        int maxSum = 0, thisSum = 0;
+
+        for (int j = 0; j < a.length; j++) {
+            thisSum += a[j];
+            if (thisSum > maxSum)
+                maxSum = thisSum;
+            else if (thisSum < 0)
+                thisSum = 0;
+        }
+        return maxSum;
     }
 }
