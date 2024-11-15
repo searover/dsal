@@ -60,7 +60,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     public void printTree() {
-
+        if (isEmpty())
+            System.out.println("Empty tree.");
+        else
+            printTree(this.root);
     }
 
     /**
@@ -156,7 +159,27 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return t;
     }
 
+    /**
+     * Internal method to print a subtree in sorted order
+     *
+     * @param t
+     */
     private void printTree(BinaryNode<T> t) {
+        if (t == null)
+            return;
+        printTree(t.left);
+        System.out.println(t.element);
+        printTree(t.right);
+    }
 
+    /**
+     * Internal method to compute the height of a subtree.
+     * @param t
+     * @return
+     */
+    private int height(BinaryNode<T> t) {
+        if (t == null)
+            return -1;
+        return 1 + Math.max(height(t.left), height(t.right));
     }
 }
