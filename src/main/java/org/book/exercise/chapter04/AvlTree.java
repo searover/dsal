@@ -76,6 +76,14 @@ public class AvlTree<T extends Comparable<? super T>> {
         return t;
     }
 
+    private AvlNode<T> doubleWithRightChild(AvlNode<T> t) {
+        throw new UnsupportedOperationException();
+    }
+
+    private AvlNode<T> rotateWithRightChild(AvlNode<T> t) {
+        throw new UnsupportedOperationException();
+    }
+
     /**
      * Rotate binary tree node with left child.
      * For AVL trees, this is a single rotation for case 1.
@@ -123,6 +131,10 @@ public class AvlTree<T extends Comparable<? super T>> {
             t = (t.left != null) ? t.left : t.right;
         }
         return balance(t);
+    }
+
+    private AvlNode<T> findMin(AvlNode<T> right) {
+        throw new UnsupportedOperationException();
     }
 
 }
