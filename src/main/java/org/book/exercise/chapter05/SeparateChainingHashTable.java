@@ -71,7 +71,23 @@ public class SeparateChainingHashTable<T> {
     private List<T>[] theLists;
     private int currentSize;
 
+    /**
+     * Rehashing for separate chaining hash table.
+     */
     private void rehash() {
+        List<T>[] oldLists = theLists;
+        // Create new double size, empty table.
+        theLists = new List[nextPrime(2 * theLists.length)];
+        for (int i = 0; i < theLists.length; i++) {
+            theLists[i] = new LinkedList<>();
+        }
+        // Copy table over
+        currentSize = 0;
+        for (int i = 0; i < oldLists.length; i++) {
+            for (T t : oldLists[i]) {
+                insert(t);
+            }
+        }
     }
 
     private int myhash(T x) {
