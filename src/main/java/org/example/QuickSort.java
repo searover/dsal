@@ -8,8 +8,7 @@ import java.util.Arrays;
  */
 public class QuickSort {
     public static void main(String[] args) {
-//        int[] arr = {1, 3, 3, 5, 9, 2, 7, 6, 9, 0, 3, 2, 5, 2, 6, 7, 2, 9, 8, 1, 8, 0, 6, 6, 5, 1, 5, 8, 7, 2};
-        int[] arr = {1, 3, 5, 6, 8};
+        int[] arr = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15, 7};
         int n = arr.length;
         System.out.println(Arrays.toString(arr));
         quickSort(arr, 0, n - 1);
@@ -26,20 +25,20 @@ public class QuickSort {
 
     private static int partition(int[] arr, int p, int r) {
         int pivot = arr[r];
-//        System.out.println("pivo t: " + pivot + ", p: " + p + ", r: " + r);
         int i = p, j = p;
         for (; j < r; j++) {
             if (arr[j] < pivot) {
-                int tmp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = tmp;
+                swap(arr, i, j);
                 ++i;
             }
         }
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-//        System.out.println(Arrays.toString(arr));
+        swap(arr, i, j);
         return i;
+    }
+
+    private static void swap(int[] a, int i, int j) {
+        int tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
     }
 }
