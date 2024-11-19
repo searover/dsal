@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class QuickSort {
     public static void main(String[] args) {
-        Integer[] a = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
+        Integer[] a = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75};
         quicksort(a);
         System.out.println(Arrays.toString(a));
     }
@@ -30,7 +30,7 @@ public class QuickSort {
 //        if (left >= right)
 //            return;
             T pivot = median3(a, left, right);
-            System.out.println("Pivot: " + pivot);
+//            System.out.println("Pivot: " + pivot);
 
             // Begin partitioning
             int i = left, j = right - 1;
